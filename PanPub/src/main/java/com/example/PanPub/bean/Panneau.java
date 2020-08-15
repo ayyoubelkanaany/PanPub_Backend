@@ -58,6 +58,10 @@ public class Panneau {
 		this.longitude = longitude;
 		this.location = location;
 	}
+	public Panneau(Long id) {
+		super();
+		this.id = id;
+	}
 	public Panneau() {
 		super();
 		// TODO Auto-generated constructor stub

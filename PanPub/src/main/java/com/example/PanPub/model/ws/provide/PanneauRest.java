@@ -99,6 +99,11 @@ public class PanneauRest {
 	    } else {
 	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	    }
-	  }
+	  }@PostMapping("/new/Panneau")
+		public Long save(@RequestBody Panneau entity) {
+			 repository.save(entity);
+	         return entity.getId();
+		}
+
 	
 }

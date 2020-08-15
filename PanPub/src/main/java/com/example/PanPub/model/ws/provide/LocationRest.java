@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.PanPub.Exception.ResourceNotFoundException;
+import com.example.PanPub.bean.Entreprise;
 import com.example.PanPub.bean.Location;
 import com.example.PanPub.model.dao.LocationRepository;
 
@@ -117,6 +118,18 @@ public class LocationRest {
 	    } else {
 	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	    }
-	  }
+	  }@PostMapping("/new/Location")
+		public void save(@RequestBody Location entity) {
+			 repository.save(entity);
+		}
+		@PutMapping("update/Location")
+		public int updateLocation(@RequestBody Location entity) {
+			System.out.println(entity.getPanneau().getId());
+			Optional<Location> Location = repository.findByPanneauId(entity.getPanneau().getId());
+			Optional<Entreprise> entreprise = repositoryentreprise.findById(entity.getEntreprise().getId());
+			Location.get().setEntreprise(entreprise.get());
+			repository.save(Location.get());
+			return 0;
+		}
 	
 }

@@ -53,6 +53,12 @@ public class Entreprise {
 		this.nom = nom;
 		this.locations = locations;
 	}
+	public Entreprise(Long id) {
+		super();
+		this.id = id;
+	
+	} 
+	 
 	public Entreprise() {
 		super();
 		// TODO Auto-generated constructor stub
