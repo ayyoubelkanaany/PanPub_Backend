@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.PanPub.Exception.ResourceNotFoundException;
 import com.example.PanPub.bean.Entreprise;
 import com.example.PanPub.bean.Location;
+import com.example.PanPub.model.dao.EntrepriseRepository;
 import com.example.PanPub.model.dao.LocationRepository;
 
 
@@ -33,7 +34,8 @@ public class LocationRest {
 	
 	@Autowired
 	LocationRepository repository;
-	
+	@Autowired
+	EntrepriseRepository repositoryentreprise;
 	 @GetMapping("/Location")
 	  public List<Location> getAllLocation() {
 	    System.out.println("Get all Locations...");
