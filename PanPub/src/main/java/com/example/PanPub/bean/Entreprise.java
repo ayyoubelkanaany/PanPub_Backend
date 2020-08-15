@@ -17,6 +17,7 @@ public class Entreprise {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	private String patente;
 	private String nom;
 	@OneToMany(mappedBy = "panneau")
 	@JsonProperty(access = Access.WRITE_ONLY)
@@ -39,9 +40,16 @@ public class Entreprise {
 	public void setLocations(List<Location> locations) {
 		this.locations = locations;
 	}
-	public Entreprise(Long id, String nom, List<Location> locations) {
+	public String getPatente() {
+		return patente;
+	}
+	public void setPatente(String patente) {
+		this.patente = patente;
+	}
+	public Entreprise(Long id, String patente, String nom, List<Location> locations) {
 		super();
 		this.id = id;
+		this.patente = patente;
 		this.nom = nom;
 		this.locations = locations;
 	}
@@ -56,6 +64,7 @@ public class Entreprise {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((locations == null) ? 0 : locations.hashCode());
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((patente == null) ? 0 : patente.hashCode());
 		return result;
 	}
 	@Override
@@ -82,11 +91,15 @@ public class Entreprise {
 				return false;
 		} else if (!nom.equals(other.nom))
 			return false;
+		if (patente == null) {
+			if (other.patente != null)
+				return false;
+		} else if (!patente.equals(other.patente))
+			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Entreprise [id=" + id + ", nom=" + nom + ", locations=" + locations + "]";
+		return "Entreprise [id=" + id + ", patente=" + patente + ", nom=" + nom + ", locations=" + locations + "]";
 	}
-	
 }

@@ -14,7 +14,7 @@ public class Panneau {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private Integer etat;
+	private Long etat;
 	private Double latitude;
 	private Double longitude;
 	@OneToOne(mappedBy = "panneau")
@@ -26,10 +26,10 @@ public class Panneau {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Integer getEtat() {
+	public Long getEtat() {
 		return etat;
 	}
-	public void setEtat(Integer etat) {
+	public void setEtat(Long etat) {
 		this.etat = etat;
 	}
 	public Double getLatitude() {
@@ -50,7 +50,7 @@ public class Panneau {
 	public void setlocation(Location location) {
 		this.location = location;
 	}
-	public Panneau(Long id, Integer etat, Double latitude, Double longitude, Location location) {
+	public Panneau(Long id, Long etat, Double latitude, Double longitude, Location location) {
 		super();
 		this.id = id;
 		this.etat = etat;
